@@ -1,9 +1,21 @@
+import { Header } from "@/components/sites/apple-com-79a1c2f0/root-e3b0c442/Header";
+import { Hero } from "@/components/sites/apple-com-79a1c2f0/root-e3b0c442/Hero";
+import { SecondaryHero } from "@/components/sites/apple-com-79a1c2f0/root-e3b0c442/SecondaryHero";
+import { CtaBanner } from "@/components/sites/apple-com-79a1c2f0/root-e3b0c442/CtaBanner";
+import { FeatureGrid } from "@/components/sites/apple-com-79a1c2f0/root-e3b0c442/FeatureGrid";
+import { ProcessShowcase } from "@/components/sites/apple-com-79a1c2f0/root-e3b0c442/ProcessShowcase";
+import { Footer } from "@/components/sites/apple-com-79a1c2f0/root-e3b0c442/Footer";
+
 export default function Home() {
   return (
-    <main className="flex min-h-screen items-center justify-center">
-      <p className="text-muted-foreground">
-        Clone target not yet built. Run <code className="font-mono text-foreground">/clone-website</code> to start.
-      </p>
+    <main id="top" className="flex min-h-screen flex-col pt-[86px]">
+      <Header />
+      <Hero />
+      <SecondaryHero />
+      <CtaBanner />
+      <FeatureGrid />
+      <ProcessShowcase />
+      <Footer />
     </main>
   );
 }

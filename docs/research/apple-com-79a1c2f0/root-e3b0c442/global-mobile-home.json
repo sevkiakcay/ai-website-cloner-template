@@ -1,0 +1,199 @@
+{
+  "title": "Apple",
+  "bodyStyles": {
+    "fontFamily": "\"SF Pro Text\", \"SF Pro Icons\", \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "fontSize": "17px",
+    "lineHeight": "25px",
+    "color": "rgb(29, 29, 31)",
+    "backgroundColor": "rgb(255, 255, 255)"
+  },
+  "navStyles": {
+    "height": "48px",
+    "position": "fixed",
+    "top": "0px",
+    "backgroundColor": "rgba(0, 0, 0, 0)",
+    "backdropFilter": "saturate(1.8) blur(20px)",
+    "padding": "0px",
+    "fontSize": "17px",
+    "zIndex": "9999",
+    "boxShadow": "none"
+  },
+  "h1Styles": {
+    "fontSize": "34px",
+    "fontWeight": "600",
+    "lineHeight": "50px",
+    "letterSpacing": "-0.374px",
+    "color": "rgb(29, 29, 31)",
+    "fontFamily": "\"SF Pro Text\", \"SF Pro Icons\", \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+  },
+  "fonts": [
+    "\"SF Pro Text\", \"SF Pro Icons\", \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "\"SF Pro Display\", \"SF Pro Icons\", \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+  ],
+  "links": [
+    {
+      "rel": "stylesheet",
+      "href": "https://www.apple.com/api-www/global-elements/global-header/v1/assets/globalheader.css"
+    },
+    {
+      "rel": "stylesheet",
+      "href": "https://www.apple.com/ac/globalfooter/8/en_US/styles/ac-globalfooter.built.css"
+    },
+    {
+      "rel": "stylesheet",
+      "href": "https://www.apple.com/ac/localnav/9/styles/ac-localnav.built.css"
+    },
+    {
+      "rel": "stylesheet",
+      "href": "https://www.apple.com/wss/fonts?families=SF+Pro,v3|SF+Pro+Icons,v3"
+    },
+    {
+      "rel": "stylesheet",
+      "href": "https://www.apple.com/v/home/a/styles/main.built.css"
+    },
+    {
+      "rel": "stylesheet",
+      "href": "https://www.apple.com/v/home/a/styles/home.built.css"
+    },
+    {
+      "rel": "stylesheet",
+      "href": "https://www.apple.com/v/home/a/built/styles/home-gallery.built.css"
+    },
+    {
+      "rel": "stylesheet",
+      "href": "https://www.apple.com/v/home/a/styles/inline-media.built.css"
+    },
+    {
+      "rel": "stylesheet",
+      "href": "https://www.apple.com/home/built/styles/home.built.css"
+    }
+  ],
+  "navItems": [
+    {
+      "text": "Apple",
+      "href": "https://www.apple.com/"
+    },
+    {
+      "text": "Store",
+      "href": "https://www.apple.com/us/shop/goto/store"
+    },
+    {
+      "text": "Shop the Latest",
+      "href": "https://www.apple.com/us/shop/goto/store"
+    },
+    {
+      "text": "Mac",
+      "href": "https://www.apple.com/us/shop/goto/buy_mac"
+    },
+    {
+      "text": "iPad",
+      "href": "https://www.apple.com/us/shop/goto/buy_ipad"
+    },
+    {
+      "text": "iPhone",
+      "href": "https://www.apple.com/us/shop/goto/buy_iphone"
+    },
+    {
+      "text": "Apple Watch",
+      "href": "https://www.apple.com/us/shop/goto/buy_watch"
+    },
+    {
+      "text": "Apple Vision Pro",
+      "href": "https://www.apple.com/us/shop/goto/buy_vision"
+    },
+    {
+      "text": "AirPods",
+      "href": "https://www.apple.com/us/shop/goto/airpods/accessories"
+    },
+    {
+      "text": "Accessories",
+      "href": "https://www.apple.com/us/shop/goto/buy_accessories"
+    },
+    {
+      "text": "Find a Store",
+      "href": "https://www.apple.com/retail/"
+    },
+    {
+      "text": "Order Status",
+      "href": "https://www.apple.com/us/shop/goto/order/list"
+    },
+    {
+      "text": "Apple Upgrade",
+      "href": "https://www.apple.com/us/shop/goto/apple_upgrade"
+    },
+    {
+      "text": "Apple Trade In",
+      "href": "https://www.apple.com/us/shop/goto/trade_in"
+    },
+    {
+      "text": "Financing",
+      "href": "https://www.apple.com/us/shop/goto/payment_plan"
+    },
+    {
+      "text": "Personal Setup",
+      "href": "https://www.apple.com/us/shop/goto/personal_setup"
+    },
+    {
+      "text": "College Student Offer",
+      "href": "https://www.apple.com/us/shop/goto/edu_store"
+    },
+    {
+      "text": "Certified Refurbished",
+      "href": "https://www.apple.com/us/shop/goto/special_deals"
+    },
+    {
+      "text": "Education",
+      "href": "https://www.apple.com/us/shop/goto/educationrouting"
+    },
+    {
+      "text": "Business",
+      "href": "https://www.apple.com/retail/business/"
+    }
+  ],
+  "sections": [
+    {
+      "tag": "SECTION",
+      "id": "",
+      "classes": "section-ribbon",
+      "height": 92,
+      "bg": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "tag": "SECTION",
+      "id": "",
+      "classes": "section section-hero",
+      "height": 1524,
+      "bg": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "tag": "SECTION",
+      "id": "",
+      "classes": "section section-promo",
+      "height": 3060,
+      "bg": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "tag": "SECTION",
+      "id": "",
+      "classes": "section-endless-entertainment-gallery",
+      "height": 896,
+      "bg": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "tag": "SECTION",
+      "id": "",
+      "classes": "ac-gf-sosumi",
+      "height": 761.75,
+      "bg": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "tag": "SECTION",
+      "id": "",
+      "classes": "ac-gf-footer",
+      "height": 180,
+      "bg": "rgba(0, 0, 0, 0)"
+    }
+  ],
+  "scrollWidth": 390,
+  "innerWidth": 390
+}
