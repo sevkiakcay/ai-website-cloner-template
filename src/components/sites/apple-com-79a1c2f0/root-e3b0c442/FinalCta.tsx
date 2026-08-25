@@ -1,18 +1,23 @@
 export function FinalCta() {
   return (
-    <section className="bg-background py-20 text-center md:py-28">
-      <h2 className="mx-auto max-w-[640px] px-6 text-[28px] leading-[1.15] font-semibold tracking-tight text-foreground md:text-[40px]">
-        Palet ihtiyacınızı birlikte planlayalım.
+    <section className="bg-surface-dark py-24 text-center text-surface-dark-foreground md:py-32">
+      <h2 className="mx-auto px-6 text-[40px] leading-[1.05] font-semibold tracking-tight uppercase md:text-[72px]">
+        Ölçü.
+        <br />
+        Üretim.
+        <br />
+        Sevkiyat.
       </h2>
-      <p className="mx-auto mt-3 max-w-[520px] px-6 text-[15px] text-muted-foreground md:text-[19px]">
-        Ölçü, miktar ve teslim takvimine göre üretim planınızı çıkaralım.
+      <p className="mx-auto mt-6 max-w-[480px] px-6 text-[15px] text-surface-dark-foreground/60 md:text-[17px]">
+        Standart ölçülerden özel üretime. İhtiyacınızı üretime dönüştürelim.
       </p>
-      <div className="mt-6">
+      <div className="mt-8">
         <a
           href="#iletisim"
-          className="rounded-full bg-primary px-5 py-2 text-[15px] font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+          className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-[15px] font-medium text-primary-foreground transition-colors hover:bg-primary/90"
         >
           Teklif Al
+          <span aria-hidden>→</span>
         </a>
       </div>
     </section>

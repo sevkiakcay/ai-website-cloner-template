@@ -42,7 +42,7 @@ const TILES: Tile[] = [
     title: "İhracat Paleti",
     subtitle: "ISPM-15 uyumlu ısıl işlem süreciyle üretim.",
     ctaLabel: "İncele",
-    ctaHref: "#ihracat-paleti",
+    ctaHref: "#uretim-sureci",
     secondaryLabel: "Teklif Al",
     dark: true,
     span: "half",

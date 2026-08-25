@@ -21,20 +21,25 @@ const COLUMNS = [
 
 export function Footer() {
   return (
-    <footer id="iletisim" className="bg-background">
-      <div className="border-t border-border px-6 py-10 text-center text-[12px] text-muted-foreground">
-        Fiyatlar sipariş miktarı, ölçü ve teslimat bölgesine göre değişebilir. Isıl işlemli
-        paletlerimiz ISPM-15 standardına uygun süreçle üretilir. Görseller temsilidir.
-      </div>
-      <div className="mx-auto max-w-[1024px] border-t border-border px-6 py-12">
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-4">
+    <footer id="iletisim" className="border-t border-surface-dark-foreground/10 bg-surface-dark text-surface-dark-foreground">
+      <div className="mx-auto max-w-[1024px] px-6 py-14">
+        <div className="flex items-center gap-2 text-[13px] font-semibold tracking-tight">
+          <LogoMark className="h-4 w-4 text-primary" />
+          Akçay Palet
+        </div>
+        <div className="mt-10 grid grid-cols-2 gap-8 sm:grid-cols-4">
           {COLUMNS.map((col) => (
             <div key={col.heading}>
-              <h4 className="text-[12px] font-semibold text-foreground">{col.heading}</h4>
-              <ul className="mt-3 space-y-2">
+              <h4 className="text-[11px] font-semibold tracking-[0.1em] text-surface-dark-foreground/45 uppercase">
+                {col.heading}
+              </h4>
+              <ul className="mt-3 space-y-2.5">
                 {col.links.map((link) => (
                   <li key={link}>
-                    <a href="#iletisim" className="text-[12px] text-muted-foreground hover:underline">
+                    <a
+                      href="#iletisim"
+                      className="text-[13px] text-surface-dark-foreground/75 transition-colors hover:text-surface-dark-foreground"
+                    >
                       {link}
                     </a>
                   </li>
@@ -44,21 +49,25 @@ export function Footer() {
           ))}
         </div>
       </div>
-      <div className="mx-auto flex max-w-[1024px] flex-col items-center justify-between gap-3 border-t border-border px-6 py-6 text-[12px] text-muted-foreground sm:flex-row">
-        <div className="flex items-center gap-1.5">
-          <LogoMark className="h-3.5 w-3.5" />
+
+      <div className="border-t border-surface-dark-foreground/10 px-6 py-6">
+        <p className="mx-auto max-w-[1024px] text-[11px] leading-relaxed text-surface-dark-foreground/40">
+          Fiyatlar sipariş miktarı, ölçü ve teslimat bölgesine göre değişebilir. Isıl işlemli
+          paletlerimiz ISPM-15 standardına uygun süreçle üretilir. Görseller temsilidir.
+        </p>
+        <div className="mx-auto mt-4 flex max-w-[1024px] flex-col items-start justify-between gap-3 text-[11px] text-surface-dark-foreground/40 sm:flex-row sm:items-center">
           <span>&copy; 2026 Akçay Palet. Tüm hakları saklıdır.</span>
-        </div>
-        <div className="flex gap-5">
-          <a href="#iletisim" className="hover:underline">
-            Gizlilik
-          </a>
-          <a href="#iletisim" className="hover:underline">
-            Kullanım Şartları
-          </a>
-          <a href="#iletisim" className="hover:underline">
-            Çerezler
-          </a>
+          <div className="flex gap-5">
+            <a href="#iletisim" className="hover:text-surface-dark-foreground/70">
+              Gizlilik
+            </a>
+            <a href="#iletisim" className="hover:text-surface-dark-foreground/70">
+              Kullanım Şartları
+            </a>
+            <a href="#iletisim" className="hover:text-surface-dark-foreground/70">
+              Çerezler
+            </a>
+          </div>
         </div>
       </div>
     </footer>

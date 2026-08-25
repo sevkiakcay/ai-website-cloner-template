@@ -1,4 +1,90 @@
-import type { SVGProps } from "react";
+import type { CSSProperties, SVGProps } from "react";
+
+/** Helper for setting the `--delay`/`--fx`/`--fy` custom properties consumed by `.assembly-part`. */
+function assemblyVars(vars: { delay?: string; fx?: string; fy?: string }): CSSProperties {
+  return {
+    ...(vars.delay !== undefined ? { "--delay": vars.delay } : {}),
+    ...(vars.fx !== undefined ? { "--fx": vars.fx } : {}),
+    ...(vars.fy !== undefined ? { "--fy": vars.fy } : {}),
+  } as CSSProperties;
+}
+
+/**
+ * Editorial engineering-style euro pallet, exploded into three assembly
+ * groups (support blocks, bottom stringers, top deck boards). Each group
+ * carries the `assembly-part` utility (see globals.css) so it drops into
+ * place on load with a staggered, mechanical easing curve. Motion is
+ * automatically disabled under `prefers-reduced-motion`.
+ */
+export function PalletAssemblyIllustration(props: SVGProps<SVGSVGElement>) {
+  const deckBoards = [0, 1, 2, 3, 4, 5];
+  return (
+    <svg viewBox="0 0 720 460" fill="none" {...props}>
+      <ellipse cx="360" cy="400" rx="260" ry="28" fill="black" opacity="0.35" />
+
+      {/* Support blocks — drop in first */}
+      <g style={assemblyVars({ delay: "0ms", fy: "-40px" })} className="assembly-part">
+        {[
+          [96, 300],
+          [340, 300],
+          [584, 300],
+          [96, 250],
+          [340, 250],
+          [584, 250],
+        ].map(([x, y], i) => (
+          <g key={i}>
+            <rect x={x} y={y} width="40" height="56" fill="#2A2521" stroke="#484038" strokeWidth="1" />
+            <rect x={x} y={y} width="40" height="6" fill="#5C5148" />
+          </g>
+        ))}
+      </g>
+
+      {/* Bottom stringers — drop in second */}
+      <g style={assemblyVars({ delay: "220ms", fy: "-90px" })} className="assembly-part">
+        {[80, 340, 600].map((x, i) => (
+          <rect key={i} x={x - 20} y="256" width="40" height="150" fill="#3A322B" stroke="#544A40" strokeWidth="1" opacity="0.92" />
+        ))}
+        <rect x="60" y="330" width="600" height="20" fill="#463C33" opacity="0.85" />
+      </g>
+
+      {/* Top deck boards — drop in last, from alternating directions */}
+      <g>
+        {deckBoards.map((i) => (
+          <g
+            key={i}
+            style={assemblyVars({
+              delay: `${420 + i * 90}ms`,
+              fx: i % 2 === 0 ? "-90px" : "90px",
+              fy: "-30px",
+            })}
+            className="assembly-part"
+          >
+            <rect
+              x={60 + i * 102}
+              y="180"
+              width="88"
+              height="220"
+              fill="#B9814A"
+              stroke="#8A5F35"
+              strokeWidth="1.5"
+            />
+            <line x1={60 + i * 102 + 10} y1="190" x2={60 + i * 102 + 10} y2="390" stroke="#8A5F35" strokeWidth="0.5" opacity="0.4" />
+          </g>
+        ))}
+      </g>
+
+      {/* Technical dimension markers */}
+      <g stroke="currentColor" strokeWidth="1" opacity="0.35">
+        <line x1="60" y1="424" x2="660" y2="424" />
+        <line x1="60" y1="418" x2="60" y2="430" />
+        <line x1="660" y1="418" x2="660" y2="430" />
+      </g>
+      <text x="360" y="448" textAnchor="middle" fontSize="13" letterSpacing="1.5" fill="currentColor" opacity="0.45">
+        1200 mm
+      </text>
+    </svg>
+  );
+}
 
 /** Isometric wooden euro-pallet, stacked boards over three runners. */
 export function WoodPalletIllustration(props: SVGProps<SVGSVGElement>) {

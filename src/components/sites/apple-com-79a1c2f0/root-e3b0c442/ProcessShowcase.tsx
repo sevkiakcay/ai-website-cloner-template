@@ -1,15 +1,16 @@
-import { WarehouseRackIllustration } from "../shared/illustrations";
-
 const PROCESS_STEPS = [
   {
+    n: "01",
     title: "Kesim & Şekillendirme",
     desc: "Keresteyi siparişe uygun ölçüde kesip şekillendiriyoruz.",
   },
   {
+    n: "02",
     title: "Montaj & Çivileme",
     desc: "Tahtaları taşıma yüküne uygun toleranslarla birleştiriyoruz.",
   },
   {
+    n: "03",
     title: "Isıl İşlem & Kontrol",
     desc: "İhracat paletlerinde ISPM-15 uyumlu ısıl işlem ve ölçü kontrolü uyguluyoruz.",
   },
@@ -29,21 +30,35 @@ const QUALITY_CHECKPOINTS = [
 export function ProcessShowcase() {
   return (
     <section id="uretim-sureci" className="bg-surface-dark py-20 text-surface-dark-foreground md:py-28">
-      <h2 className="px-6 text-center text-[32px] font-semibold tracking-tight md:text-[48px]">
-        Üretim sürecimiz.
+      <p className="px-6 text-center text-[12px] font-semibold tracking-[0.2em] text-surface-dark-foreground/45 uppercase">
+        Üretim Sürecimiz
+      </p>
+      <h2 className="mt-3 px-6 text-center text-[30px] font-semibold tracking-tight md:text-[44px]">
+        Ölçüden ısıl işleme, kontrollü üretim.
       </h2>
-      <div className="mx-auto mt-6 max-w-[1024px] px-4">
-        <WarehouseRackIllustration className="h-auto w-full text-primary" />
+
+      <div className="mx-auto mt-16 max-w-[1024px] px-6 md:mt-20">
+        <div className="relative grid gap-x-6 gap-y-12 sm:grid-cols-3">
+          <div
+            aria-hidden
+            className="absolute top-[14px] right-[16.5%] left-[16.5%] hidden h-px bg-surface-dark-foreground/15 sm:block"
+          />
+          {PROCESS_STEPS.map((step) => (
+            <div key={step.n} className="relative text-center">
+              <div className="mx-auto flex h-7 w-7 items-center justify-center rounded-full bg-surface-dark ring-1 ring-surface-dark-foreground/25">
+                <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+              </div>
+              <p className="mt-4 font-mono text-[13px] tracking-widest text-primary/80">{step.n}</p>
+              <h3 className="mt-1 text-[17px] font-semibold">{step.title}</h3>
+              <p className="mx-auto mt-2 max-w-[240px] text-[14px] text-surface-dark-foreground/60">
+                {step.desc}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
-      <div className="mx-auto mt-14 grid max-w-[1024px] gap-6 px-6 sm:grid-cols-3">
-        {PROCESS_STEPS.map((step) => (
-          <div key={step.title} className="text-center">
-            <h3 className="text-[17px] font-semibold">{step.title}</h3>
-            <p className="mt-2 text-[14px] text-surface-dark-foreground/65">{step.desc}</p>
-          </div>
-        ))}
-      </div>
-      <div className="mx-auto mt-16 max-w-[1024px] px-6">
+
+      <div className="mx-auto mt-20 max-w-[1024px] px-6 md:mt-24">
         <p className="text-center text-[12px] font-medium tracking-wide text-surface-dark-foreground/50 uppercase">
           Kontrol noktalarımız
         </p>

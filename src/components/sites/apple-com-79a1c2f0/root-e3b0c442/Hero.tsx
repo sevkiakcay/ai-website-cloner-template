@@ -1,36 +1,55 @@
-import { WoodPalletIllustration } from "../shared/illustrations";
+import { PalletAssemblyIllustration } from "../shared/illustrations";
 
 export function Hero() {
   return (
     <section
       id="ahsap-palet"
-      className="bg-surface-alt pt-24 pb-16 text-center md:pt-32 md:pb-24"
+      className="relative overflow-hidden bg-surface-dark text-surface-dark-foreground"
     >
-      <h1 className="mx-auto text-[40px] leading-[1.05] font-semibold tracking-tight text-foreground md:text-[64px]">
-        Ahşap Palet Üretimi
-      </h1>
-      <p className="mt-2 text-[19px] text-foreground md:text-[24px]">
-        80x120, 80x100, 100x120 ve özel ölçülerde üretim.
-      </p>
-      <p className="mt-2 text-[15px] text-muted-foreground md:text-[19px]">
-        İç piyasa ve ihracat sevkiyatları için ısıl işlem seçeneğiyle.
-      </p>
-      <div className="mt-6 flex items-center justify-center gap-4 text-[15px] font-medium md:mt-7">
-        <a
-          href="#iletisim"
-          className="rounded-full bg-primary px-5 py-2 text-primary-foreground transition-colors hover:bg-primary/90"
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(60% 55% at 50% 18%, color-mix(in oklch, var(--primary) 22%, transparent) 0%, transparent 70%)",
+        }}
+      />
+      <div className="relative mx-auto flex min-h-[86vh] max-w-[1024px] flex-col items-center px-6 pt-24 pb-16 text-center md:min-h-[92vh] md:pt-32">
+        <p className="reveal text-[12px] font-semibold tracking-[0.2em] text-surface-dark-foreground/50 uppercase">
+          Akçay Palet
+        </p>
+        <h1
+          className="reveal mt-4 max-w-[820px] text-[34px] leading-[1.08] font-semibold tracking-tight md:text-[58px]"
+          style={{ animationDelay: "80ms" }}
         >
-          Teklif Al
-        </a>
-        <a
-          href="#ozel-olcu"
-          className="rounded-full border border-border px-5 py-2 text-foreground transition-colors hover:bg-accent"
+          Ahşap palet üretiminde mühendislik yaklaşımı.
+        </h1>
+        <p
+          className="reveal mt-4 max-w-[540px] text-[15px] text-surface-dark-foreground/65 md:text-[18px]"
+          style={{ animationDelay: "160ms" }}
         >
-          Ürünleri İncele
-        </a>
-      </div>
-      <div className="mx-auto mt-10 max-w-[720px] px-6 md:mt-16">
-        <WoodPalletIllustration className="h-auto w-full drop-shadow-[0_30px_60px_rgba(0,0,0,0.12)]" />
+          Standart ölçülerden özel üretime, ihracattan endüstriyel sevkiyata.
+        </p>
+        <div
+          className="reveal mt-7 flex items-center justify-center gap-4 text-[15px] font-medium"
+          style={{ animationDelay: "240ms" }}
+        >
+          <a
+            href="#iletisim"
+            className="rounded-full bg-primary px-5 py-2 text-primary-foreground transition-colors hover:bg-primary/90"
+          >
+            Teklif Al
+          </a>
+          <a
+            href="#uretim-sureci"
+            className="rounded-full border border-surface-dark-foreground/25 px-5 py-2 text-surface-dark-foreground transition-colors hover:bg-surface-dark-foreground/10"
+          >
+            Üretimi Keşfet
+          </a>
+        </div>
+        <div className="mt-auto w-full max-w-[640px] pt-14 md:pt-20">
+          <PalletAssemblyIllustration className="h-auto w-full text-surface-dark-foreground" />
+        </div>
       </div>
     </section>
   );

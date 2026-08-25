@@ -3,7 +3,7 @@ import { LogoMark, MenuIcon, SearchIcon } from "../shared/icons";
 
 const NAV_LINKS = [
   { label: "Ahşap Palet", href: "#ahsap-palet" },
-  { label: "İhracat Paleti", href: "#ihracat-paleti" },
+  { label: "İhracat Paleti", href: "#ozel-olcu" },
   { label: "Özel Ölçü", href: "#ozel-olcu" },
   { label: "Üretim Süreci", href: "#uretim-sureci" },
   { label: "Neden Akçay", href: "#neden-akcay" },
