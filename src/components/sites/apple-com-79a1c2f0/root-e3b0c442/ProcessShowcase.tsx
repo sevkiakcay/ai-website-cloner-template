@@ -1,21 +1,30 @@
-import { WarehouseRackIllustration, QualitySealIllustration } from "../shared/illustrations";
+import { WarehouseRackIllustration } from "../shared/illustrations";
 
 const PROCESS_STEPS = [
   {
     title: "Kesim & Şekillendirme",
-    desc: "Sertifikalı ormanlardan gelen keresteyi CNC hatlarında ölçüsüne kesiyoruz.",
+    desc: "Keresteyi siparişe uygun ölçüde kesip şekillendiriyoruz.",
   },
   {
     title: "Montaj & Çivileme",
-    desc: "Otomatik çivileme hatlarında EPAL toleranslarına uygun montaj.",
+    desc: "Tahtaları taşıma yüküne uygun toleranslarla birleştiriyoruz.",
   },
   {
-    title: "Kalite Kontrol",
-    desc: "Her parti nem oranı, taşıma kapasitesi ve ISPM-15 damgası için test edilir.",
+    title: "Isıl İşlem & Kontrol",
+    desc: "İhracat paletlerinde ISPM-15 uyumlu ısıl işlem ve ölçü kontrolü uyguluyoruz.",
   },
 ];
 
-const CERTIFICATIONS = ["ISO 9001", "ISPM-15", "TSE", "FSC"];
+// Kontrol noktaları üretim sürecimizin bir parçasıdır; bunlar bağımsız bir
+// sertifikasyon iddiası değildir. Doğrulanmış sertifika/belge bilgisi
+// eklendiğinde bu bölüm ayrı bir "Belgelerimiz" bileşeniyle genişletilebilir.
+// TODO: Onaylı sertifika/belge bilgisi netleşince ayrı bölüm eklenecek.
+const QUALITY_CHECKPOINTS = [
+  "Ölçü ve tolerans kontrolü",
+  "Nem oranı kontrolü",
+  "Çivi ve bağlantı sağlamlığı",
+  "Isıl işlem sıcaklık takibi",
+];
 
 export function ProcessShowcase() {
   return (
@@ -34,13 +43,17 @@ export function ProcessShowcase() {
           </div>
         ))}
       </div>
-      <div className="mx-auto mt-16 flex max-w-[1024px] flex-wrap items-center justify-center gap-x-10 gap-y-6 px-6">
-        {CERTIFICATIONS.map((cert) => (
-          <div key={cert} className="flex items-center gap-2 text-[13px] font-medium text-surface-dark-foreground/80">
-            <QualitySealIllustration className="h-8 w-8 text-primary" />
-            {cert}
-          </div>
-        ))}
+      <div className="mx-auto mt-16 max-w-[1024px] px-6">
+        <p className="text-center text-[12px] font-medium tracking-wide text-surface-dark-foreground/50 uppercase">
+          Kontrol noktalarımız
+        </p>
+        <div className="mt-4 flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
+          {QUALITY_CHECKPOINTS.map((point) => (
+            <span key={point} className="text-[13px] text-surface-dark-foreground/80">
+              {point}
+            </span>
+          ))}
+        </div>
       </div>
     </section>
   );

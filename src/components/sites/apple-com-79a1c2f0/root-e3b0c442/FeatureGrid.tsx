@@ -1,8 +1,10 @@
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import {
-  CratePalletIllustration,
-  RecycleLoopIllustration,
+  WoodPalletIllustration,
+  QualitySealIllustration,
+  TruckIllustration,
+  RulerIllustration,
 } from "../shared/illustrations";
 import { ArrowRightIcon } from "../shared/icons";
 
@@ -20,69 +22,78 @@ interface Tile {
 
 const TILES: Tile[] = [
   {
-    id: "ahsap-buyuk",
+    id: "ahsap-palet-olcu",
     title: "Ahşap Palet",
-    subtitle: "Her yük için doğru ölçü ve sınıf.",
+    subtitle: "80x120, 80x100, 100x120 standart ölçüler.",
     ctaLabel: "İncele",
     ctaHref: "#ahsap-palet",
-    secondaryLabel: "Fiyat Al",
+    secondaryLabel: "Teklif Al",
     span: "half",
     visual: (
-      <div className="flex h-full items-end justify-center pt-8">
-        <div className="h-24 w-full rounded-t-2xl bg-gradient-to-t from-[#C88A4A]/25 to-transparent" />
+      <div className="flex h-full items-end justify-center pt-4">
+        <WoodPalletIllustration className="h-auto w-full max-w-[300px] opacity-90" />
       </div>
     ),
   },
   {
-    id: "sepet-palet",
-    title: "Kasa & Sepet Palet",
-    subtitle: "Katlanabilir, dayanıklı, alan kazandırır.",
+    id: "ihracat-detay",
+    title: "İhracat Paleti",
+    subtitle: "ISPM-15 uyumlu ısıl işlem süreciyle üretim.",
     ctaLabel: "İncele",
-    ctaHref: "#kasa-sepet",
-    secondaryLabel: "Fiyat Al",
+    ctaHref: "#ihracat-paleti",
+    secondaryLabel: "Teklif Al",
     dark: true,
     span: "half",
     visual: (
-      <div className="flex h-full items-center justify-center px-10 pb-4">
-        <CratePalletIllustration className="h-auto w-full max-w-[280px]" />
+      <div className="flex h-full items-center justify-center pb-4 text-primary">
+        <QualitySealIllustration className="h-28 w-28" />
       </div>
     ),
   },
   {
-    id: "geri-donusum",
-    title: "Geri Dönüşüm",
-    subtitle: "Kullanılmış paletini değerlendir.",
+    id: "ic-piyasa",
+    title: "İç Piyasa Paleti",
+    subtitle: "Yurt içi lojistik ve depolama için ekonomik seçenek.",
+    ctaLabel: "İncele",
+    ctaHref: "#ahsap-palet",
+    span: "quarter",
+    visual: (
+      <div className="flex h-full items-end justify-center pt-6 pb-4">
+        <div className="h-20 w-full max-w-[180px] rounded-t-2xl bg-gradient-to-t from-[#C88A4A]/20 to-transparent" />
+      </div>
+    ),
+  },
+  {
+    id: "ozel-olcu-tile",
+    title: "Özel Ölçü Üretim",
+    subtitle: "Ürününüze göre tasarlanan palet ölçüsü.",
+    ctaLabel: "Teklif Al",
+    ctaHref: "#iletisim",
+    span: "quarter",
+    visual: (
+      <div className="flex h-full items-center justify-center pb-4 text-foreground/70">
+        <RulerIllustration className="h-auto w-full max-w-[160px]" />
+      </div>
+    ),
+  },
+  {
+    id: "hizli-sevkiyat",
+    title: "Hızlı Sevkiyat",
+    subtitle: "Sipariş planlamasına uygun düzenli teslimat.",
     ctaLabel: "Detaylar",
     ctaHref: "#iletisim",
     span: "quarter",
     visual: (
-      <div className="flex h-full items-center justify-center pb-4 text-primary">
-        <RecycleLoopIllustration className="h-24 w-24" />
+      <div className="flex h-full items-center justify-center pb-4 text-foreground/70">
+        <TruckIllustration className="h-auto w-full max-w-[160px]" />
       </div>
     ),
   },
   {
-    id: "kiralama",
-    title: "Palet Kiralama",
-    subtitle: "Sermayeni sabit yatırıma bağlama.",
-    ctaLabel: "İncele",
-    ctaHref: "#kiralama",
-    span: "quarter",
-    visual: (
-      <div className="flex h-full items-end justify-center pb-4">
-        <div className="grid w-40 grid-cols-3 gap-2">
-          {[0, 1, 2].map((i) => (
-            <div key={i} className="h-10 rounded-md bg-primary/15" style={{ marginTop: i * 6 }} />
-          ))}
-        </div>
-      </div>
-    ),
-  },
-  {
-    id: "ozel-uretim",
-    title: "Özel Ölçü Üretim",
-    subtitle: "Projenize özel palet tasarımı.",
-    ctaLabel: "Teklif Al",
+    id: "b2b-hizmet",
+    title: "Kurumsal B2B Hizmet",
+    subtitle: "Üretici ile doğrudan görüşme, aracısız teklif.",
+    ctaLabel: "Görüşelim",
     ctaHref: "#iletisim",
     span: "quarter",
     visual: (
@@ -92,19 +103,6 @@ const TILES: Tile[] = [
             <div key={i} className="w-4 rounded-t bg-foreground/10" style={{ height: h * 4 }} />
           ))}
         </div>
-      </div>
-    ),
-  },
-  {
-    id: "kurumsal",
-    title: "Kurumsal Anlaşma",
-    subtitle: "Yıllık sözleşmede özel fiyatlandırma.",
-    ctaLabel: "Görüşelim",
-    ctaHref: "#iletisim",
-    span: "quarter",
-    visual: (
-      <div className="flex h-full items-center justify-center pb-4">
-        <span className="text-[13px] font-medium text-muted-foreground">%100</span>
       </div>
     ),
   },
@@ -156,7 +154,7 @@ export function FeatureGrid() {
   const halves = TILES.filter((t) => t.span === "half");
   const quarters = TILES.filter((t) => t.span === "quarter");
   return (
-    <section id="kasa-sepet" className="bg-background px-4 py-4 md:px-6">
+    <section id="ozel-olcu" className="bg-background px-4 py-4 md:px-6">
       <div className="mx-auto grid max-w-[1024px] gap-4 md:grid-cols-2">
         {halves.map((tile) => (
           <TileCard key={tile.id} tile={tile} />

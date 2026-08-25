@@ -3,19 +3,19 @@ import { LogoMark } from "../shared/icons";
 const COLUMNS = [
   {
     heading: "Ürünler",
-    links: ["Ahşap Palet", "Plastik Palet", "Kasa & Sepet Palet", "Özel Ölçü Üretim"],
+    links: ["Ahşap Palet (80x120)", "Ahşap Palet (80x100)", "Ahşap Palet (100x120)", "Özel Ölçü Üretim"],
   },
   {
-    heading: "Hizmetler",
-    links: ["Palet Kiralama", "Geri Dönüşüm", "Lojistik & Sevkiyat", "Depolama"],
+    heading: "İhracat",
+    links: ["İhracat Paleti", "Isıl İşlemli Palet", "ISPM-15 Uyumlu Üretim", "İç Piyasa Paleti"],
   },
   {
     heading: "Kurumsal",
-    links: ["Hakkımızda", "Sürdürülebilirlik", "Kariyer", "Sertifikalar"],
+    links: ["Üretim Sürecimiz", "Neden Akçay Palet", "Kalite Kontrol Noktalarımız"],
   },
   {
     heading: "Destek",
-    links: ["Sıkça Sorulan Sorular", "Teklif Al", "Sevkiyat Takibi", "İletişim"],
+    links: ["Teklif Al", "Sipariş & Sevkiyat", "İletişim"],
   },
 ];
 
@@ -23,8 +23,8 @@ export function Footer() {
   return (
     <footer id="iletisim" className="bg-background">
       <div className="border-t border-border px-6 py-10 text-center text-[12px] text-muted-foreground">
-        Fiyatlar sipariş miktarı ve teslimat bölgesine göre değişebilir. EPAL ve ISPM-15 damgalı
-        ürünlerimiz ilgili standartlara uygun üretilmiştir. Görseller temsilidir.
+        Fiyatlar sipariş miktarı, ölçü ve teslimat bölgesine göre değişebilir. Isıl işlemli
+        paletlerimiz ISPM-15 standardına uygun süreçle üretilir. Görseller temsilidir.
       </div>
       <div className="mx-auto max-w-[1024px] border-t border-border px-6 py-12">
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-4">

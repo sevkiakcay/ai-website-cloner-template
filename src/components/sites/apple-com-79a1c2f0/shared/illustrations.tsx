@@ -146,6 +146,32 @@ export function RecycleLoopIllustration(props: SVGProps<SVGSVGElement>) {
   );
 }
 
+/** Delivery truck silhouette for logistics / fast-shipment messaging. */
+export function TruckIllustration(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 200 120" fill="none" {...props}>
+      <rect x="10" y="40" width="100" height="46" rx="4" fill="currentColor" opacity="0.9" />
+      <path d="M110 55h34l26 22v9h-60V55Z" fill="currentColor" opacity="0.6" />
+      <circle cx="50" cy="92" r="12" fill="currentColor" />
+      <circle cx="150" cy="92" r="12" fill="currentColor" />
+      <circle cx="50" cy="92" r="4" fill="var(--color-surface-alt)" />
+      <circle cx="150" cy="92" r="4" fill="var(--color-surface-alt)" />
+    </svg>
+  );
+}
+
+/** Measuring/ruler mark for custom-size manufacturing. */
+export function RulerIllustration(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 200 80" fill="none" {...props}>
+      <rect x="10" y="30" width="180" height="20" rx="3" fill="currentColor" opacity="0.85" />
+      {[...Array(9)].map((_, i) => (
+        <rect key={i} x={20 + i * 20} y="30" width="2" height={i % 2 === 0 ? 12 : 7} fill="var(--color-surface-alt)" />
+      ))}
+    </svg>
+  );
+}
+
 /** Certification / quality-control seal used in the process showcase. */
 export function QualitySealIllustration(props: SVGProps<SVGSVGElement>) {
   return (
