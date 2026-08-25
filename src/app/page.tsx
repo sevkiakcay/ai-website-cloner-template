@@ -1,5 +1,6 @@
 import { Navigation } from "@/components/layout/navigation";
 import { PalletFilm } from "@/components/cinematic/pallet-film";
+import { DimensionVisualizer } from "@/components/products/dimension-visualizer";
 
 export default function Home() {
   return (
@@ -7,6 +8,8 @@ export default function Home() {
       <Navigation />
       <main>
         <PalletFilm />
+
+        <DimensionVisualizer />
 
         <section id="kurumsal" className="border-t border-border bg-background px-6 py-32">
           <div className="mx-auto max-w-3xl text-center">
@@ -18,7 +21,7 @@ export default function Home() {
               ahşap palet üretiyoruz.
             </p>
             <p className="mt-4 text-sm text-muted-foreground">
-              Ürünler · Üretim · Lojistik bölümleri yakında yayında.
+              Isıl İşlem · Üretim · Ürün Evreni · Lojistik bölümleri yakında yayında.
             </p>
           </div>
         </section>

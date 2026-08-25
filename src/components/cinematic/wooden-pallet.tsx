@@ -6,6 +6,7 @@ import {
   buildBoards,
   band,
   lerp,
+  lerpBoardFrame,
   type BoardKind,
   type BoardSpec,
   type PalletDimension,
@@ -116,15 +117,36 @@ function Prism({ spec, innerRef }: { spec: BoardSpec; innerRef: (el: HTMLDivElem
   );
 }
 
-export const WoodenPallet = forwardRef<WoodenPalletHandle, { dimension?: PalletDimension; className?: string }>(
-  function WoodenPallet({ dimension = "80x120", className }, ref) {
+type WoodenPalletProps = {
+  dimension?: PalletDimension;
+  className?: string;
+  /** morph target — when set alongside footprintT, the pallet blends live from `dimension` toward this footprint */
+  targetDimension?: PalletDimension;
+  /** 0 = fully `dimension`, 1 = fully `targetDimension`. Drives a brief re-render (board w/h/d change), unlike
+   *  the continuous scroll scene which never re-renders — dimension morphs are short, user-triggered, and rare. */
+  footprintT?: number;
+};
+
+export const WoodenPallet = forwardRef<WoodenPalletHandle, WoodenPalletProps>(
+  function WoodenPallet({ dimension = "80x120", className, targetDimension, footprintT = 0 }, ref) {
     const boardsRef = useRef<Map<string, HTMLDivElement>>(new Map());
     const groupRef = useRef<HTMLDivElement>(null);
 
-    const boards = useMemo(() => {
+    const boardsA = useMemo(() => {
       const foot = FOOTPRINT[dimension === "custom" ? "80x120" : dimension];
       return buildBoards(foot.x, foot.z);
     }, [dimension]);
+
+    const boardsB = useMemo(() => {
+      if (!targetDimension) return null;
+      const foot = FOOTPRINT[targetDimension === "custom" ? "80x120" : targetDimension];
+      return buildBoards(foot.x, foot.z);
+    }, [targetDimension]);
+
+    const boards = useMemo(() => {
+      if (!boardsB) return boardsA;
+      return boardsA.map((a, i) => ({ ...a, ...lerpBoardFrame(a, boardsB[i], footprintT) }));
+    }, [boardsA, boardsB, footprintT]);
 
     useImperativeHandle(ref, () => ({
       getBoards: () => boards,

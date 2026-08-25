@@ -142,3 +142,27 @@ export function buildBoards(footX: number, footZ: number): BoardSpec[] {
 
   return boards;
 }
+
+/**
+ * Lerps the numeric surface of two same-shaped board sets (same id/kind/group/count,
+ * different footprint) so a pallet can morph live between dimensions without remounting.
+ * `a` and `b` must come from buildBoards() calls — board identity is stable across footprints,
+ * only w/d/pos/scatter actually differ.
+ */
+export function lerpBoardFrame(a: BoardSpec, b: BoardSpec, t: number) {
+  return {
+    w: lerp(a.w, b.w, t),
+    h: lerp(a.h, b.h, t),
+    d: lerp(a.d, b.d, t),
+    pos: {
+      x: lerp(a.pos.x, b.pos.x, t),
+      y: lerp(a.pos.y, b.pos.y, t),
+      z: lerp(a.pos.z, b.pos.z, t),
+    },
+    scatter: {
+      x: lerp(a.scatter.x, b.scatter.x, t),
+      y: lerp(a.scatter.y, b.scatter.y, t),
+      z: lerp(a.scatter.z, b.scatter.z, t),
+    },
+  };
+}
