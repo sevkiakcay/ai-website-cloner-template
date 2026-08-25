@@ -1,10 +1,12 @@
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import {
-  WoodPalletIllustration,
+  WoodPalletTopViewIllustration,
   QualitySealIllustration,
   TruckIllustration,
   RulerIllustration,
+  DirectLinkIllustration,
+  StackIllustration,
 } from "../shared/illustrations";
 import { ArrowRightIcon } from "../shared/icons";
 
@@ -30,8 +32,8 @@ const TILES: Tile[] = [
     secondaryLabel: "Teklif Al",
     span: "half",
     visual: (
-      <div className="flex h-full items-end justify-center pt-4">
-        <WoodPalletIllustration className="h-auto w-full max-w-[300px] opacity-90" />
+      <div className="flex h-full items-end justify-center pt-4 pb-2">
+        <WoodPalletTopViewIllustration className="h-auto w-full max-w-[260px]" />
       </div>
     ),
   },
@@ -58,8 +60,8 @@ const TILES: Tile[] = [
     ctaHref: "#ahsap-palet",
     span: "quarter",
     visual: (
-      <div className="flex h-full items-end justify-center pt-6 pb-4">
-        <div className="h-20 w-full max-w-[180px] rounded-t-2xl bg-gradient-to-t from-[#C88A4A]/20 to-transparent" />
+      <div className="flex h-full items-center justify-center pb-4 text-foreground/50">
+        <StackIllustration className="h-auto w-full max-w-[150px]" />
       </div>
     ),
   },
@@ -97,12 +99,8 @@ const TILES: Tile[] = [
     ctaHref: "#iletisim",
     span: "quarter",
     visual: (
-      <div className="flex h-full items-end justify-center pb-4">
-        <div className="flex gap-1.5">
-          {[10, 16, 22, 16, 10].map((h, i) => (
-            <div key={i} className="w-4 rounded-t bg-foreground/10" style={{ height: h * 4 }} />
-          ))}
-        </div>
+      <div className="flex h-full items-center justify-center pb-4 text-foreground/50">
+        <DirectLinkIllustration className="h-auto w-full max-w-[160px]" />
       </div>
     ),
   },

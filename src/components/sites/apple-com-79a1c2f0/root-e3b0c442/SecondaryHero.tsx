@@ -21,8 +21,8 @@ export function SecondaryHero() {
         </a>
       </div>
       <div className="relative mx-auto mt-10 max-w-[640px] px-6 md:mt-14">
-        <WoodPalletIllustration className="h-auto w-full" />
-        <QualitySealIllustration className="absolute right-10 top-0 h-16 w-16 text-primary md:h-20 md:w-20" />
+        <WoodPalletIllustration className="h-auto w-full -scale-x-100" />
+        <QualitySealIllustration className="absolute left-10 top-0 h-16 w-16 text-primary md:h-20 md:w-20" />
       </div>
     </section>
   );

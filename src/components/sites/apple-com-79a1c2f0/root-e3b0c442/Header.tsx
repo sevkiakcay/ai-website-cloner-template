@@ -14,7 +14,7 @@ export function Header() {
   return (
     <div className="fixed inset-x-0 top-0 z-50">
       <div className="bg-surface-dark text-surface-dark-foreground text-center text-[12px] leading-[38px]">
-        Özel ölçü ve toplu sipariş taleplerinize hızlı dönüş yapıyoruz.{" "}
+        Ahşap palet ihtiyaçlarınızda doğrudan üreticiyle çalışın.{" "}
         <a href="#iletisim" className="underline underline-offset-2 hover:no-underline">
           Teklif al
         </a>

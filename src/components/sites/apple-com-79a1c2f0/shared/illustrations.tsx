@@ -146,6 +146,42 @@ export function RecycleLoopIllustration(props: SVGProps<SVGSVGElement>) {
   );
 }
 
+/** Single-layer top-down pallet deck, for compact/secondary product mentions. */
+export function WoodPalletTopViewIllustration(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 260 160" fill="none" {...props}>
+      <rect x="10" y="20" width="240" height="120" rx="6" fill="#C88A4A" opacity="0.15" />
+      {[0, 1, 2, 3, 4].map((i) => (
+        <rect key={i} x={24 + i * 46} y="30" width="34" height="100" rx="3" fill="#C88A4A" />
+      ))}
+    </svg>
+  );
+}
+
+/** Stacked warehouse shelf bars, for domestic stock/storage messaging. */
+export function StackIllustration(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 200 110" fill="none" {...props}>
+      <rect x="10" y="10" width="180" height="20" rx="4" fill="currentColor" opacity="0.9" />
+      <rect x="26" y="45" width="148" height="20" rx="4" fill="currentColor" opacity="0.6" />
+      <rect x="46" y="80" width="108" height="20" rx="4" fill="currentColor" opacity="0.35" />
+    </svg>
+  );
+}
+
+/** Two connected nodes — direct producer-to-buyer relationship for B2B messaging. */
+export function DirectLinkIllustration(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 200 100" fill="none" {...props}>
+      <line x1="40" y1="50" x2="160" y2="50" stroke="currentColor" strokeWidth="2" strokeDasharray="1 10" strokeLinecap="round" />
+      <circle cx="40" cy="50" r="14" fill="currentColor" opacity="0.12" />
+      <circle cx="40" cy="50" r="6" fill="currentColor" />
+      <circle cx="160" cy="50" r="14" fill="currentColor" opacity="0.12" />
+      <circle cx="160" cy="50" r="6" fill="currentColor" />
+    </svg>
+  );
+}
+
 /** Delivery truck silhouette for logistics / fast-shipment messaging. */
 export function TruckIllustration(props: SVGProps<SVGSVGElement>) {
   return (

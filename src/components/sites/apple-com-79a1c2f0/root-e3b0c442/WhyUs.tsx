@@ -5,7 +5,7 @@ const PILLARS = [
   },
   {
     title: "Esnek Üretim",
-    desc: "Standart 80x120, 80x100, 100x120 ölçülerin yanı sıra özel ölçüde üretim planlıyoruz.",
+    desc: "Standart ölçülerin yanı sıra ürününüze özel ölçüde üretim planlıyoruz.",
   },
   {
     title: "Doğrudan İletişim",
