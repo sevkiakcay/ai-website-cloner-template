@@ -1,6 +1,13 @@
+"use client";
+
+import type { CSSProperties } from "react";
+import { useInView } from "@/hooks/use-in-view";
 import { PalletAssemblyIllustration } from "../shared/illustrations";
 
 export function Hero() {
+  const { ref, inView } = useInView<HTMLDivElement>();
+  const playState = { "--play-state": inView ? "running" : "paused" } as CSSProperties;
+
   return (
     <section
       id="ahsap-palet"
@@ -8,13 +15,18 @@ export function Hero() {
     >
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0"
+        className="pointer-events-none absolute inset-0 transition-opacity duration-[1400ms]"
         style={{
           background:
             "radial-gradient(60% 55% at 50% 18%, color-mix(in oklch, var(--primary) 22%, transparent) 0%, transparent 70%)",
+          opacity: inView ? 1 : 0.4,
         }}
       />
-      <div className="relative mx-auto flex min-h-[86vh] max-w-[1024px] flex-col items-center px-6 pt-24 pb-16 text-center md:min-h-[92vh] md:pt-32">
+      <div
+        ref={ref}
+        style={playState}
+        className="relative mx-auto flex min-h-[86vh] max-w-[1024px] flex-col items-center px-6 pt-24 pb-16 text-center md:min-h-[92vh] md:pt-32"
+      >
         <p className="reveal text-[12px] font-semibold tracking-[0.2em] text-surface-dark-foreground/50 uppercase">
           Akçay Palet
         </p>

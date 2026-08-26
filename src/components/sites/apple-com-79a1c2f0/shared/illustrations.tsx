@@ -13,11 +13,18 @@ function assemblyVars(vars: { delay?: string; fx?: string; fy?: string }): CSSPr
  * Editorial engineering-style euro pallet, exploded into three assembly
  * groups (support blocks, bottom stringers, top deck boards). Each group
  * carries the `assembly-part` utility (see globals.css) so it drops into
- * place on load with a staggered, mechanical easing curve. Motion is
- * automatically disabled under `prefers-reduced-motion`.
+ * place with a staggered, mechanical spring-drop curve, a ground-contact
+ * flash on landing (`assembly-impact`), and a single light sweep across
+ * the finished pallet once the last board settles (`assembly-sheen`).
+ * Playback is driven by the `--play-state` CSS variable set on an
+ * ancestor (see Hero.tsx), and is automatically disabled under
+ * `prefers-reduced-motion`.
  */
 export function PalletAssemblyIllustration(props: SVGProps<SVGSVGElement>) {
   const deckBoards = [0, 1, 2, 3, 4, 5];
+  const lastDeckBoardDelay = 420 + (deckBoards.length - 1) * 90;
+  const sheenDelay = `${lastDeckBoardDelay + 900 + 60}ms`;
+
   return (
     <svg viewBox="0 0 720 460" fill="none" {...props}>
       <ellipse cx="360" cy="400" rx="260" ry="28" fill="black" opacity="0.35" />
@@ -38,6 +45,15 @@ export function PalletAssemblyIllustration(props: SVGProps<SVGSVGElement>) {
           </g>
         ))}
       </g>
+      <ellipse
+        cx="360"
+        cy="358"
+        rx="270"
+        ry="14"
+        fill="currentColor"
+        className="assembly-impact"
+        style={assemblyVars({ delay: "60ms" })}
+      />
 
       {/* Bottom stringers — drop in second */}
       <g style={assemblyVars({ delay: "220ms", fy: "-90px" })} className="assembly-part">
@@ -46,6 +62,15 @@ export function PalletAssemblyIllustration(props: SVGProps<SVGSVGElement>) {
         ))}
         <rect x="60" y="330" width="600" height="20" fill="#463C33" opacity="0.85" />
       </g>
+      <ellipse
+        cx="360"
+        cy="340"
+        rx="290"
+        ry="12"
+        fill="currentColor"
+        className="assembly-impact"
+        style={assemblyVars({ delay: "280ms" })}
+      />
 
       {/* Top deck boards — drop in last, from alternating directions */}
       <g>
@@ -72,6 +97,15 @@ export function PalletAssemblyIllustration(props: SVGProps<SVGSVGElement>) {
           </g>
         ))}
       </g>
+      <ellipse
+        cx="360"
+        cy="185"
+        rx="330"
+        ry="12"
+        fill="#FFEFD9"
+        className="assembly-impact"
+        style={assemblyVars({ delay: `${lastDeckBoardDelay}ms` })}
+      />
 
       {/* Technical dimension markers */}
       <g stroke="currentColor" strokeWidth="1" opacity="0.35">
@@ -82,6 +116,26 @@ export function PalletAssemblyIllustration(props: SVGProps<SVGSVGElement>) {
       <text x="360" y="448" textAnchor="middle" fontSize="13" letterSpacing="1.5" fill="currentColor" opacity="0.45">
         1200 mm
       </text>
+
+      {/* Assembly-complete light sweep across the finished pallet */}
+      <g style={{ mixBlendMode: "overlay" }}>
+        <defs>
+          <linearGradient id="pallet-sheen" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stopColor="white" stopOpacity="0" />
+            <stop offset="50%" stopColor="white" stopOpacity="0.9" />
+            <stop offset="100%" stopColor="white" stopOpacity="0" />
+          </linearGradient>
+        </defs>
+        <rect
+          x="0"
+          y="150"
+          width="220"
+          height="270"
+          fill="url(#pallet-sheen)"
+          className="assembly-sheen"
+          style={assemblyVars({ delay: sheenDelay })}
+        />
+      </g>
     </svg>
   );
 }
