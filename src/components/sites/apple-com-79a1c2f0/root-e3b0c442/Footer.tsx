@@ -1,27 +1,50 @@
 import { LogoMark } from "../shared/icons";
 
+// Each link routes to the section that actually answers it — not a blanket
+// "#iletisim" for everything (that dead-ended the whole footer at one anchor).
 const COLUMNS = [
   {
     heading: "Ürünler",
-    links: ["Ahşap Palet (80x120)", "Ahşap Palet (80x100)", "Ahşap Palet (100x120)", "Özel Ölçü Üretim"],
+    links: [
+      { label: "Ahşap Palet (80x120)", href: "#ahsap-palet" },
+      { label: "Ahşap Palet (80x100)", href: "#ahsap-palet" },
+      { label: "Ahşap Palet (100x120)", href: "#ahsap-palet" },
+      { label: "Özel Ölçü Üretim", href: "#ozel-olcu" },
+    ],
   },
   {
     heading: "İhracat",
-    links: ["İhracat Paleti", "Isıl İşlemli Palet", "ISPM-15 Uyumlu Üretim", "İç Piyasa Paleti"],
+    links: [
+      { label: "İhracat Paleti", href: "#ozel-olcu" },
+      { label: "Isıl İşlemli Palet", href: "#uretim-sureci" },
+      { label: "ISPM-15 Uyumlu Üretim", href: "#uretim-sureci" },
+      { label: "İç Piyasa Paleti", href: "#ozel-olcu" },
+    ],
   },
   {
     heading: "Kurumsal",
-    links: ["Üretim Sürecimiz", "Neden Akçay Palet", "Kalite Kontrol Noktalarımız"],
+    links: [
+      { label: "Üretim Sürecimiz", href: "#uretim-sureci" },
+      { label: "Neden Akçay Palet", href: "#neden-akcay" },
+      { label: "Kalite Kontrol Noktalarımız", href: "#uretim-sureci" },
+    ],
   },
   {
     heading: "Destek",
-    links: ["Teklif Al", "Sipariş & Sevkiyat", "İletişim"],
+    links: [
+      { label: "Teklif Al", href: "#iletisim" },
+      { label: "Sipariş & Sevkiyat", href: "#iletisim" },
+      { label: "İletişim", href: "#iletisim" },
+    ],
   },
 ];
 
+// No privacy/terms/cookie pages exist yet — plain text rather than links to nowhere.
+const LEGAL_LABELS = ["Gizlilik", "Kullanım Şartları", "Çerezler"];
+
 export function Footer() {
   return (
-    <footer id="iletisim" className="border-t border-surface-dark-foreground/10 bg-surface-dark text-surface-dark-foreground">
+    <footer className="border-t border-surface-dark-foreground/10 bg-surface-dark text-surface-dark-foreground">
       <div className="mx-auto max-w-[1024px] px-6 py-14">
         <div className="flex items-center gap-2 text-[13px] font-semibold tracking-tight">
           <LogoMark className="h-4 w-4 text-primary" />
@@ -35,12 +58,12 @@ export function Footer() {
               </h4>
               <ul className="mt-3 space-y-2.5">
                 {col.links.map((link) => (
-                  <li key={link}>
+                  <li key={link.label}>
                     <a
-                      href="#iletisim"
+                      href={link.href}
                       className="text-[13px] text-surface-dark-foreground/75 transition-colors hover:text-surface-dark-foreground"
                     >
-                      {link}
+                      {link.label}
                     </a>
                   </li>
                 ))}
@@ -58,15 +81,9 @@ export function Footer() {
         <div className="mx-auto mt-4 flex max-w-[1024px] flex-col items-start justify-between gap-3 text-[11px] text-surface-dark-foreground/40 sm:flex-row sm:items-center">
           <span>&copy; 2026 Akçay Palet. Tüm hakları saklıdır.</span>
           <div className="flex gap-5">
-            <a href="#iletisim" className="hover:text-surface-dark-foreground/70">
-              Gizlilik
-            </a>
-            <a href="#iletisim" className="hover:text-surface-dark-foreground/70">
-              Kullanım Şartları
-            </a>
-            <a href="#iletisim" className="hover:text-surface-dark-foreground/70">
-              Çerezler
-            </a>
+            {LEGAL_LABELS.map((label) => (
+              <span key={label}>{label}</span>
+            ))}
           </div>
         </div>
       </div>
