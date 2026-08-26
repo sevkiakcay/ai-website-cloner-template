@@ -243,12 +243,6 @@
   }
 }
 
-/* Correct transform origin for GSAP-tweened SVG parts in CinematicHero (see root-e3b0c442/CinematicHero.tsx). */
-.cinematic-part {
-  transform-box: fill-box;
-  transform-origin: center;
-}
-
 @layer base {
   * {
     @apply border-border outline-ring/50;
