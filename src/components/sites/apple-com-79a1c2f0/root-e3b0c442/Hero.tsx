@@ -22,16 +22,25 @@ export function Hero() {
           opacity: inView ? 1 : 0.4,
         }}
       />
+      {/* Cinematic vignette — grounds the assembled pallet and eases the transition into the next section, no scroll-jacking. */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(180deg, transparent 0%, transparent 62%, color-mix(in oklch, var(--surface-dark) 55%, transparent) 88%, var(--surface-dark) 100%), radial-gradient(120% 65% at 50% 100%, black 0%, transparent 55%)",
+        }}
+      />
       <div
         ref={ref}
         style={playState}
         className="relative mx-auto flex min-h-[86vh] max-w-[1024px] flex-col items-center px-6 pt-24 pb-16 text-center md:min-h-[92vh] md:pt-32"
       >
-        <p className="reveal text-[12px] font-semibold tracking-[0.2em] text-surface-dark-foreground/50 uppercase">
+        <p className="reveal text-[11px] font-semibold tracking-[0.28em] text-surface-dark-foreground/50 uppercase">
           Akçay Palet
         </p>
         <h1
-          className="reveal mt-4 max-w-[820px] text-[34px] leading-[1.08] font-semibold tracking-tight md:text-[58px]"
+          className="reveal mt-5 max-w-[820px] text-[34px] leading-[1.06] font-semibold tracking-tight md:text-[60px]"
           style={{ animationDelay: "80ms" }}
         >
           Ahşap palet üretiminde mühendislik yaklaşımı.

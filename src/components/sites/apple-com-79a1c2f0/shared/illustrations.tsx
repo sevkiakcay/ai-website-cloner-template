@@ -1,140 +1,253 @@
 import type { CSSProperties, SVGProps } from "react";
 
-/** Helper for setting the `--delay`/`--fx`/`--fy` custom properties consumed by `.assembly-part`. */
-function assemblyVars(vars: { delay?: string; fx?: string; fy?: string }): CSSProperties {
+/** Helper for setting the `--delay`/`--fx`/`--fy`/`--rot` custom properties consumed by `.assembly-part`. */
+function assemblyVars(vars: { delay?: string; fx?: string; fy?: string; rot?: string }): CSSProperties {
   return {
     ...(vars.delay !== undefined ? { "--delay": vars.delay } : {}),
     ...(vars.fx !== undefined ? { "--fx": vars.fx } : {}),
     ...(vars.fy !== undefined ? { "--fy": vars.fy } : {}),
+    ...(vars.rot !== undefined ? { "--rot": vars.rot } : {}),
   } as CSSProperties;
 }
 
 /**
- * Editorial engineering-style euro pallet, exploded into three assembly
- * groups (support blocks, bottom stringers, top deck boards). Each group
- * carries the `assembly-part` utility (see globals.css) so it drops into
- * place with a staggered, mechanical spring-drop curve, a ground-contact
- * flash on landing (`assembly-impact`), and a single light sweep across
- * the finished pallet once the last board settles (`assembly-sheen`).
+ * Editorial engineering-style euro pallet, exploded into four physically
+ * ordered assembly stages — support blocks, bottom stringers, the
+ * connecting cap battens ("ara elemanlar"), then the top deck boards.
+ * Each part carries the `assembly-part` utility (see globals.css) so it
+ * drops in with a staggered, spring-drop curve and a slight settle
+ * rotation, a ground-contact flash on landing (`assembly-impact`), and a
+ * single light sweep once the last board settles (`assembly-sheen`),
+ * followed by a very slow, restrained cinematic hold (`assembly-hold`).
  * Playback is driven by the `--play-state` CSS variable set on an
  * ancestor (see Hero.tsx), and is automatically disabled under
  * `prefers-reduced-motion`.
  */
 export function PalletAssemblyIllustration(props: SVGProps<SVGSVGElement>) {
+  const blocks: Array<[number, number]> = [
+    [96, 300],
+    [340, 300],
+    [584, 300],
+    [96, 250],
+    [340, 250],
+    [584, 250],
+  ];
+  const stringerXs = [80, 340, 600];
+  const capXs = [66, 315, 564];
   const deckBoards = [0, 1, 2, 3, 4, 5];
-  const lastDeckBoardDelay = 420 + (deckBoards.length - 1) * 90;
-  const sheenDelay = `${lastDeckBoardDelay + 900 + 60}ms`;
+
+  const blockStagger = 32;
+  const blocksStart = 0;
+  const blocksEnd = blocksStart + (blocks.length - 1) * blockStagger + 760;
+
+  const stringerStagger = 45;
+  const stringersStart = blocksEnd - 220;
+  const stringersEnd = stringersStart + (stringerXs.length - 1) * stringerStagger + 720;
+
+  const capStagger = 40;
+  const capsStart = stringersEnd - 160;
+  const capsEnd = capsStart + (capXs.length - 1) * capStagger + 560;
+
+  const deckStagger = 78;
+  const deckStart = capsEnd - 120;
+  const deckDuration = 820;
+  const lastDeckBoardDelay = deckStart + (deckBoards.length - 1) * deckStagger;
+  const sheenDelay = lastDeckBoardDelay + deckDuration + 80;
+  const holdDelay = sheenDelay + 900;
 
   return (
     <svg viewBox="0 0 720 460" fill="none" {...props}>
+      <defs>
+        <linearGradient id="plank-grain" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#D9A05E" />
+          <stop offset="12%" stopColor="#C48C4E" />
+          <stop offset="48%" stopColor="#B9814A" />
+          <stop offset="76%" stopColor="#A9723F" />
+          <stop offset="100%" stopColor="#8F5E33" />
+        </linearGradient>
+        <linearGradient id="plank-grain-alt" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#CE9457" />
+          <stop offset="20%" stopColor="#BD8749" />
+          <stop offset="55%" stopColor="#AF7A41" />
+          <stop offset="100%" stopColor="#8A5A32" />
+        </linearGradient>
+        <linearGradient id="block-face" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#332C26" />
+          <stop offset="100%" stopColor="#211C18" />
+        </linearGradient>
+        <linearGradient id="stringer-face" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#463A2E" />
+          <stop offset="100%" stopColor="#2C241D" />
+        </linearGradient>
+        <radialGradient id="stage-light" cx="50%" cy="0%" r="85%">
+          <stop offset="0%" stopColor="#FFD9A0" stopOpacity="0.16" />
+          <stop offset="100%" stopColor="#FFD9A0" stopOpacity="0" />
+        </radialGradient>
+        <linearGradient id="pallet-sheen" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stopColor="white" stopOpacity="0" />
+          <stop offset="50%" stopColor="white" stopOpacity="0.9" />
+          <stop offset="100%" stopColor="white" stopOpacity="0" />
+        </linearGradient>
+      </defs>
+
+      {/* Directional key light, top-down, restrained */}
+      <rect x="0" y="0" width="720" height="300" fill="url(#stage-light)" />
+
       <ellipse cx="360" cy="400" rx="260" ry="28" fill="black" opacity="0.35" />
+      <ellipse cx="360" cy="400" rx="330" ry="42" fill="black" opacity="0.12" />
 
-      {/* Support blocks — drop in first */}
-      <g style={assemblyVars({ delay: "0ms", fy: "-40px" })} className="assembly-part">
-        {[
-          [96, 300],
-          [340, 300],
-          [584, 300],
-          [96, 250],
-          [340, 250],
-          [584, 250],
-        ].map(([x, y], i) => (
-          <g key={i}>
-            <rect x={x} y={y} width="40" height="56" fill="#2A2521" stroke="#484038" strokeWidth="1" />
-            <rect x={x} y={y} width="40" height="6" fill="#5C5148" />
-          </g>
-        ))}
-      </g>
-      <ellipse
-        cx="360"
-        cy="358"
-        rx="270"
-        ry="14"
-        fill="currentColor"
-        className="assembly-impact"
-        style={assemblyVars({ delay: "60ms" })}
-      />
-
-      {/* Bottom stringers — drop in second */}
-      <g style={assemblyVars({ delay: "220ms", fy: "-90px" })} className="assembly-part">
-        {[80, 340, 600].map((x, i) => (
-          <rect key={i} x={x - 20} y="256" width="40" height="150" fill="#3A322B" stroke="#544A40" strokeWidth="1" opacity="0.92" />
-        ))}
-        <rect x="60" y="330" width="600" height="20" fill="#463C33" opacity="0.85" />
-      </g>
-      <ellipse
-        cx="360"
-        cy="340"
-        rx="290"
-        ry="12"
-        fill="currentColor"
-        className="assembly-impact"
-        style={assemblyVars({ delay: "280ms" })}
-      />
-
-      {/* Top deck boards — drop in last, from alternating directions */}
-      <g>
-        {deckBoards.map((i) => (
-          <g
-            key={i}
-            style={assemblyVars({
-              delay: `${420 + i * 90}ms`,
-              fx: i % 2 === 0 ? "-90px" : "90px",
-              fy: "-30px",
-            })}
-            className="assembly-part"
-          >
-            <rect
-              x={60 + i * 102}
-              y="180"
-              width="88"
-              height="220"
-              fill="#B9814A"
-              stroke="#8A5F35"
-              strokeWidth="1.5"
-            />
-            <line x1={60 + i * 102 + 10} y1="190" x2={60 + i * 102 + 10} y2="390" stroke="#8A5F35" strokeWidth="0.5" opacity="0.4" />
-          </g>
-        ))}
-      </g>
-      <ellipse
-        cx="360"
-        cy="185"
-        rx="330"
-        ry="12"
-        fill="#FFEFD9"
-        className="assembly-impact"
-        style={assemblyVars({ delay: `${lastDeckBoardDelay}ms` })}
-      />
-
-      {/* Technical dimension markers */}
-      <g stroke="currentColor" strokeWidth="1" opacity="0.35">
-        <line x1="60" y1="424" x2="660" y2="424" />
-        <line x1="60" y1="418" x2="60" y2="430" />
-        <line x1="660" y1="418" x2="660" y2="430" />
-      </g>
-      <text x="360" y="448" textAnchor="middle" fontSize="13" letterSpacing="1.5" fill="currentColor" opacity="0.45">
-        1200 mm
-      </text>
-
-      {/* Assembly-complete light sweep across the finished pallet */}
-      <g style={{ mixBlendMode: "overlay" }}>
-        <defs>
-          <linearGradient id="pallet-sheen" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="white" stopOpacity="0" />
-            <stop offset="50%" stopColor="white" stopOpacity="0.9" />
-            <stop offset="100%" stopColor="white" stopOpacity="0" />
-          </linearGradient>
-        </defs>
-        <rect
-          x="0"
-          y="150"
-          width="220"
-          height="270"
-          fill="url(#pallet-sheen)"
-          className="assembly-sheen"
-          style={assemblyVars({ delay: sheenDelay })}
+      <g className="assembly-hold" style={assemblyVars({ delay: `${holdDelay}ms` })}>
+        {/* Stage 1 — destek blokları (support blocks) */}
+        <g>
+          {blocks.map(([x, y], i) => (
+            <g
+              key={i}
+              style={assemblyVars({ delay: `${blocksStart + i * blockStagger}ms`, fy: "-40px", rot: i % 2 === 0 ? "-2.5deg" : "2.5deg" })}
+              className="assembly-part"
+            >
+              <rect x={x} y={y} width="40" height="56" fill="url(#block-face)" stroke="#4A4038" strokeWidth="1" />
+              <rect x={x} y={y} width="40" height="6" fill="#6B5D4E" />
+              <rect x={x} y={y} width="4" height="56" fill="#3E362E" opacity="0.7" />
+            </g>
+          ))}
+        </g>
+        <ellipse
+          cx="360"
+          cy="358"
+          rx="270"
+          ry="14"
+          fill="currentColor"
+          className="assembly-impact"
+          style={assemblyVars({ delay: `${blocksEnd - 60}ms` })}
         />
+
+        {/* Stage 2 — alt elemanlar (bottom stringers) */}
+        <g>
+          {stringerXs.map((x, i) => (
+            <rect
+              key={i}
+              x={x - 20}
+              y="256"
+              width="40"
+              height="150"
+              fill="url(#stringer-face)"
+              stroke="#5A4C3C"
+              strokeWidth="1"
+              opacity="0.94"
+              style={assemblyVars({ delay: `${stringersStart + i * stringerStagger}ms`, fy: "-90px", rot: i === 1 ? "0deg" : i === 0 ? "-1.8deg" : "1.8deg" })}
+              className="assembly-part"
+            />
+          ))}
+          <rect
+            x="60"
+            y="330"
+            width="600"
+            height="20"
+            fill="#4A3D2F"
+            opacity="0.88"
+            style={assemblyVars({ delay: `${stringersStart + stringerXs.length * stringerStagger}ms`, fy: "-70px" })}
+            className="assembly-part"
+          />
+        </g>
+        <ellipse
+          cx="360"
+          cy="340"
+          rx="290"
+          ry="12"
+          fill="currentColor"
+          className="assembly-impact"
+          style={assemblyVars({ delay: `${stringersEnd - 60}ms` })}
+        />
+
+        {/* Stage 3 — ara elemanlar (connecting cap battens between stringers and deck) */}
+        <g>
+          {capXs.map((x, i) => (
+            <rect
+              key={i}
+              x={x}
+              y="196"
+              width="92"
+              height="16"
+              rx="2"
+              fill="#5C4A36"
+              stroke="#3C3022"
+              strokeWidth="1"
+              style={assemblyVars({ delay: `${capsStart + i * capStagger}ms`, fy: "-46px" })}
+              className="assembly-part"
+            />
+          ))}
+        </g>
+        <ellipse
+          cx="360"
+          cy="205"
+          rx="300"
+          ry="10"
+          fill="currentColor"
+          className="assembly-impact"
+          style={assemblyVars({ delay: `${capsEnd - 60}ms` })}
+        />
+
+        {/* Stage 4 — üst deck tahtaları (top deck boards), alternating directions */}
+        <g>
+          {deckBoards.map((i) => (
+            <g
+              key={i}
+              style={assemblyVars({
+                delay: `${deckStart + i * deckStagger}ms`,
+                fx: i % 2 === 0 ? "-90px" : "90px",
+                fy: "-30px",
+                rot: i % 2 === 0 ? "-3deg" : "3deg",
+              })}
+              className="assembly-part"
+            >
+              <rect
+                x={60 + i * 102}
+                y="180"
+                width="88"
+                height="220"
+                fill={i % 2 === 0 ? "url(#plank-grain)" : "url(#plank-grain-alt)"}
+                stroke="#7A5230"
+                strokeWidth="1.5"
+              />
+              <rect x={60 + i * 102} y="180" width="88" height="5" fill="#EFC98D" opacity="0.55" />
+              <line x1={60 + i * 102 + 10} y1="190" x2={60 + i * 102 + 10} y2="390" stroke="#7A5230" strokeWidth="0.5" opacity="0.45" />
+              <line x1={60 + i * 102 + 30} y1="188" x2={60 + i * 102 + 30} y2="392" stroke="#6B4626" strokeWidth="0.4" opacity="0.3" />
+              <line x1={60 + i * 102 + 60} y1="190" x2={60 + i * 102 + 60} y2="388" stroke="#6B4626" strokeWidth="0.4" opacity="0.3" />
+            </g>
+          ))}
+        </g>
+        <ellipse
+          cx="360"
+          cy="185"
+          rx="330"
+          ry="12"
+          fill="#FFEFD9"
+          className="assembly-impact"
+          style={assemblyVars({ delay: `${lastDeckBoardDelay}ms` })}
+        />
+
+        {/* Technical dimension markers */}
+        <g stroke="currentColor" strokeWidth="1" opacity="0.35">
+          <line x1="60" y1="424" x2="660" y2="424" />
+          <line x1="60" y1="418" x2="60" y2="430" />
+          <line x1="660" y1="418" x2="660" y2="430" />
+        </g>
+        <text x="360" y="448" textAnchor="middle" fontSize="13" letterSpacing="1.5" fill="currentColor" opacity="0.45">
+          1200 mm
+        </text>
+
+        {/* Assembly-complete light sweep across the finished pallet */}
+        <g style={{ mixBlendMode: "overlay" }}>
+          <rect
+            x="0"
+            y="150"
+            width="220"
+            height="270"
+            fill="url(#pallet-sheen)"
+            className="assembly-sheen"
+            style={assemblyVars({ delay: `${sheenDelay}ms` })}
+          />
+        </g>
       </g>
     </svg>
   );

@@ -126,22 +126,42 @@
 @keyframes assemble-drop {
   0% {
     opacity: 0;
-    transform: translate3d(var(--fx, 0px), var(--fy, -70px), 0) scale(0.94);
+    transform: translate3d(var(--fx, 0px), var(--fy, -70px), 0) scale(0.94) rotate(var(--rot, 0deg));
   }
   72% {
     opacity: 1;
-    transform: translate3d(calc(var(--fx, 0px) * -0.05), 5px, 0) scale(1.012);
+    transform: translate3d(calc(var(--fx, 0px) * -0.05), 5px, 0) scale(1.012) rotate(calc(var(--rot, 0deg) * -0.15));
   }
   100% {
     opacity: 1;
-    transform: translate3d(0, 0, 0) scale(1);
+    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
   }
 }
 
 .assembly-part {
-  animation: assemble-drop 900ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: assemble-drop 760ms cubic-bezier(0.16, 1, 0.3, 1) both;
   animation-delay: var(--delay, 0ms);
   animation-play-state: var(--play-state, running);
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+/* Very slow, restrained cinematic hold once assembly finishes — a near-imperceptible push-in. */
+@keyframes assembly-hold {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.018);
+  }
+}
+
+.assembly-hold {
+  animation: assembly-hold 5200ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: var(--delay, 3200ms);
+  animation-play-state: var(--play-state, running);
+  transform-box: fill-box;
+  transform-origin: 50% 62%;
 }
 
 /* Brief ground-contact flash timed to a part's landing (see --delay on each group). */
@@ -209,6 +229,7 @@
   .assembly-part,
   .assembly-impact,
   .assembly-sheen,
+  .assembly-hold,
   .reveal {
     animation: none !important;
     opacity: 1 !important;
