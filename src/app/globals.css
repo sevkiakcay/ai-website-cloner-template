@@ -226,15 +226,27 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  /* Real content — show its finished state immediately, no entrance animation. */
   .assembly-part,
-  .assembly-impact,
-  .assembly-sheen,
   .assembly-hold,
   .reveal {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;
   }
+  /* Transient one-shot flashes/sheen have no meaningful static appearance — hide them outright. */
+  .assembly-impact,
+  .assembly-sheen {
+    animation: none !important;
+    opacity: 0 !important;
+    transform: none !important;
+  }
+}
+
+/* Correct transform origin for GSAP-tweened SVG parts in CinematicHero (see root-e3b0c442/CinematicHero.tsx). */
+.cinematic-part {
+  transform-box: fill-box;
+  transform-origin: center;
 }
 
 @layer base {
