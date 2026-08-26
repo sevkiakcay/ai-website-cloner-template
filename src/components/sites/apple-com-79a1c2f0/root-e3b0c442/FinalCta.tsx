@@ -1,6 +1,7 @@
 import { CONTACT, whatsappUrl } from "@/lib/contact";
+import { QuoteForm } from "./QuoteForm";
 
-const CONTACT_CHANNELS = [
+const QUICK_CHANNELS = [
   { label: "WhatsApp", value: whatsappUrl("Merhaba, palet üretimi hakkında teklif almak istiyorum.") },
   { label: CONTACT.phone, value: CONTACT.phone ? `tel:${CONTACT.phone.replace(/\s/g, "")}` : null },
   { label: CONTACT.email, value: CONTACT.email ? `mailto:${CONTACT.email}` : null },
@@ -21,32 +22,24 @@ export function FinalCta() {
         Standart ölçülerden özel üretime. İhtiyacınızı üretime dönüştürelim.
       </p>
 
-      {CONTACT_CHANNELS.length > 0 ? (
-        <div className="mt-8 flex flex-col items-center gap-4 px-6">
-          <div className="flex flex-wrap items-center justify-center gap-3 text-[15px] font-medium">
-            {CONTACT_CHANNELS.map((channel) => (
-              <a
-                key={channel.label}
-                href={channel.value}
-                className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-primary-foreground transition-colors hover:bg-primary/90"
-              >
-                {channel.label}
-                <span aria-hidden>→</span>
-              </a>
-            ))}
-          </div>
-        </div>
-      ) : (
-        <div className="mt-8 px-6">
-          <a
-            href="#iletisim"
-            className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-[15px] font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-            Teklif Al
-            <span aria-hidden>→</span>
-          </a>
+      {QUICK_CHANNELS.length > 0 && (
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-3 px-6 text-[15px] font-medium">
+          {QUICK_CHANNELS.map((channel) => (
+            <a
+              key={channel.label}
+              href={channel.value}
+              className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-primary-foreground transition-colors hover:bg-primary/90"
+            >
+              {channel.label}
+              <span aria-hidden>→</span>
+            </a>
+          ))}
         </div>
       )}
+
+      <div className="px-6">
+        <QuoteForm />
+      </div>
     </section>
   );
 }

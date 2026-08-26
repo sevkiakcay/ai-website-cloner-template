@@ -87,6 +87,25 @@ export function CinematicFrameHero() {
       });
     }
 
+    // Waits for a genuine engagement signal (scroll/wheel/touch) before fetching the
+    // remaining ~90% of frames — a visitor who bounces before scrolling never pays
+    // for them. Resolves immediately if the user is already mid-scroll by the time
+    // the first block finishes loading.
+    function waitForScrollIntent(): Promise<void> {
+      return new Promise((resolve) => {
+        if (window.scrollY > 4) {
+          resolve();
+          return;
+        }
+        const events: Array<keyof WindowEventMap> = ["scroll", "wheel", "touchmove"];
+        const onIntent = () => {
+          events.forEach((e) => window.removeEventListener(e, onIntent));
+          resolve();
+        };
+        events.forEach((e) => window.addEventListener(e, onIntent, { passive: true, once: true }));
+      });
+    }
+
     async function run() {
       await loadFrame(1);
       if (cancelled) return;
@@ -97,6 +116,9 @@ export function CinematicFrameHero() {
         if (cancelled) return;
         await loadFrame(n);
       }
+
+      await waitForScrollIntent();
+      if (cancelled) return;
 
       for (let n = FIRST_BLOCK_SIZE + 1; n <= PALLET_FRAME_COUNT; n += SPACED_STRIDE) {
         if (cancelled) return;

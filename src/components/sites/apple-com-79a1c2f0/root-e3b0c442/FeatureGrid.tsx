@@ -26,13 +26,23 @@ const TILES: Tile[] = [
   {
     id: "ahsap-palet-olcu",
     title: "Ahşap Palet",
-    subtitle: "80x120, 80x100, 100x120 standart ölçüler.",
+    subtitle: "EUR/EPAL ölçü standardında 80x120, 80x100, 100x120 üretim.",
     ctaLabel: "İncele",
     ctaHref: "#ahsap-palet",
     secondaryLabel: "Teklif Al",
     span: "half",
     visual: (
-      <div className="flex h-full items-end justify-center pt-4 pb-2">
+      <div className="flex h-full flex-col items-center justify-end gap-3 pt-4 pb-2">
+        <div className="flex flex-wrap items-center justify-center gap-1.5">
+          {["80×120", "80×100", "100×120"].map((size) => (
+            <span
+              key={size}
+              className="rounded-full border border-border px-2.5 py-0.5 font-mono text-[11px] text-muted-foreground"
+            >
+              {size}
+            </span>
+          ))}
+        </div>
         <WoodPalletTopViewIllustration className="h-auto w-full max-w-[260px]" />
       </div>
     ),
@@ -40,7 +50,7 @@ const TILES: Tile[] = [
   {
     id: "ihracat-detay",
     title: "İhracat Paleti",
-    subtitle: "ISPM-15 uyumlu ısıl işlem süreciyle üretim.",
+    subtitle: "Isıl işlemli (ISPM-15) veya işlemsiz — ihtiyacınıza göre üretim.",
     ctaLabel: "İncele",
     ctaHref: "#uretim-sureci",
     secondaryLabel: "Teklif Al",
@@ -152,8 +162,14 @@ export function FeatureGrid() {
   const halves = TILES.filter((t) => t.span === "half");
   const quarters = TILES.filter((t) => t.span === "quarter");
   return (
-    <section id="ozel-olcu" className="bg-background px-4 py-4 md:px-6">
-      <div className="mx-auto grid max-w-[1024px] gap-4 md:grid-cols-2">
+    <section id="ozel-olcu" className="bg-background px-4 pt-14 pb-4 md:px-6 md:pt-20">
+      <p className="px-2 text-center text-[12px] font-semibold tracking-[0.2em] text-muted-foreground uppercase">
+        Ürün Çözümlerimiz
+      </p>
+      <h2 className="mt-3 px-2 text-center text-[26px] font-semibold tracking-tight text-foreground md:text-[36px]">
+        Standarttan özel üretime, tek üretici.
+      </h2>
+      <div className="mx-auto mt-10 grid max-w-[1024px] gap-4 md:grid-cols-2 md:mt-12">
         {halves.map((tile) => (
           <TileCard key={tile.id} tile={tile} />
         ))}
