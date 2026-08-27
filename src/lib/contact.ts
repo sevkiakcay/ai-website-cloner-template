@@ -11,7 +11,7 @@ export const CONTACT = {
   whatsappNumber: null as string | null,
   /** Display + tel: href format — e.g. "+90 5XX XXX XX XX". */
   phone: null as string | null,
-  email: null as string | null,
+  email: "sevkiakcay@gmail.com" as string | null,
 };
 
 export function whatsappUrl(prefilledMessage?: string): string | null {
