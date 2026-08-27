@@ -16,7 +16,7 @@ export function HeroTransition() {
   return (
     <section className="bg-surface-dark text-surface-dark-foreground">
       <div ref={ref} style={playState} className="mx-auto max-w-[720px] px-6 py-20 text-center md:py-28">
-        <h2 className="reveal text-[28px] leading-[1.15] font-semibold tracking-tight md:text-[38px]">
+        <h2 className="reveal font-heading text-[29px] leading-[1.1] font-semibold tracking-[-0.015em] md:text-[40px]">
           Paletten Fazlasını Üretiyoruz.
         </h2>
         <p

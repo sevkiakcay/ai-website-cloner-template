@@ -17,7 +17,7 @@ export function CustomManufacturing() {
       <div className="mx-auto grid max-w-[1024px] gap-10 md:grid-cols-2 md:gap-16">
         <div>
           <p className="text-[12px] font-semibold tracking-[0.2em] text-muted-foreground uppercase">Özel Üretim</p>
-          <h2 className="mt-3 text-[32px] leading-[1.08] font-semibold tracking-tight text-foreground md:text-[44px]">
+          <h2 className="font-heading mt-3 text-[33px] leading-[1.06] font-semibold tracking-[-0.015em] text-foreground md:text-[46px]">
             Ölçünüze Göre Üretiyoruz.
           </h2>
           <p className="mt-4 max-w-[440px] text-[15px] leading-relaxed text-muted-foreground">

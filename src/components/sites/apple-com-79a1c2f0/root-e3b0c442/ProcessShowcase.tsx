@@ -33,7 +33,7 @@ export function ProcessShowcase() {
       <p className="px-6 text-center text-[12px] font-semibold tracking-[0.2em] text-surface-dark-foreground/45 uppercase">
         Üretim Sürecimiz
       </p>
-      <h2 className="mt-3 px-6 text-center text-[30px] font-semibold tracking-tight md:text-[44px]">
+      <h2 className="font-heading mt-3 px-6 text-center text-[31px] font-semibold tracking-[-0.015em] md:text-[46px]">
         Ölçüden ısıl işleme, kontrollü üretim.
       </h2>
 

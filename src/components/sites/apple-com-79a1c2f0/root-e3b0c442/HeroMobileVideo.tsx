@@ -31,7 +31,7 @@ export function HeroMobileVideo() {
         <p className="text-[11px] font-semibold tracking-[0.28em] text-surface-dark-foreground/50 uppercase">
           Akçay Palet
         </p>
-        <h1 className="mt-5 max-w-[820px] text-[32px] leading-[1.08] font-semibold tracking-tight">
+        <h1 className="font-heading mt-5 max-w-[820px] text-[33px] leading-[1.05] font-bold tracking-[-0.02em]">
           Yükünüzü Taşıyan Güç.
         </h1>
         <p className="mt-4 max-w-[520px] text-[15px] text-surface-dark-foreground/65">

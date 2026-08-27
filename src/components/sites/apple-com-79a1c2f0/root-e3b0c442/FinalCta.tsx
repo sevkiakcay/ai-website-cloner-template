@@ -11,7 +11,7 @@ const QUICK_CHANNELS = [
 export function FinalCta() {
   return (
     <section id="iletisim" className="bg-surface-dark py-24 text-center text-surface-dark-foreground md:py-32">
-      <h2 className="mx-auto px-6 text-[40px] leading-[1.05] font-semibold tracking-tight uppercase md:text-[72px]">
+      <h2 className="font-heading mx-auto px-6 text-[40px] leading-[1.03] font-bold tracking-[-0.01em] uppercase md:text-[74px]">
         Ölçü.
         <br />
         Üretim.

@@ -16,7 +16,7 @@ const PILLARS = [
 export function WhyUs() {
   return (
     <section id="neden-akcay" className="bg-surface-alt py-20 md:py-28">
-      <h2 className="px-6 text-center text-[28px] font-semibold tracking-tight text-foreground md:text-[40px]">
+      <h2 className="font-heading px-6 text-center text-[29px] font-semibold tracking-[-0.015em] text-foreground md:text-[42px]">
         Neden Akçay Palet.
       </h2>
       <div className="mx-auto mt-12 grid max-w-[1024px] gap-10 px-6 sm:grid-cols-3">

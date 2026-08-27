@@ -21,7 +21,7 @@ export function ProductSpecs() {
             <p className="text-[12px] font-semibold tracking-[0.2em] text-muted-foreground uppercase">
               Ürün Çözümlerimiz
             </p>
-            <h2 className="mt-3 text-[28px] leading-[1.1] font-semibold tracking-tight text-foreground md:text-[36px]">
+            <h2 className="font-heading mt-3 text-[29px] leading-[1.08] font-semibold tracking-[-0.015em] text-foreground md:text-[38px]">
               Standarttan özel üretime, tek üretici.
             </h2>
             <p className="mt-4 text-[15px] leading-relaxed text-muted-foreground">

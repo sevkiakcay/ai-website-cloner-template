@@ -235,7 +235,7 @@ export function CinematicFrameHero() {
           <p className="text-[11px] font-semibold tracking-[0.28em] text-surface-dark-foreground/50 uppercase">
             Akçay Palet
           </p>
-          <h1 className="mt-5 text-[38px] leading-[1.06] font-semibold tracking-tight md:text-[58px]">
+          <h1 className="font-heading mt-5 text-[40px] leading-[1.04] font-bold tracking-[-0.02em] md:text-[62px]">
             Yükünüzü Taşıyan Güç.
           </h1>
           <p className="mt-4 text-[15px] text-surface-dark-foreground/65 md:text-[18px]">
