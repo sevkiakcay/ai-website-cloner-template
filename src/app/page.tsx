@@ -1,7 +1,8 @@
 import { Header } from "@/components/sites/apple-com-79a1c2f0/root-e3b0c442/Header";
 import { Hero } from "@/components/sites/apple-com-79a1c2f0/root-e3b0c442/Hero";
 import { HeroTransition } from "@/components/sites/apple-com-79a1c2f0/root-e3b0c442/HeroTransition";
-import { FeatureGrid } from "@/components/sites/apple-com-79a1c2f0/root-e3b0c442/FeatureGrid";
+import { ProductSpecs } from "@/components/sites/apple-com-79a1c2f0/root-e3b0c442/ProductSpecs";
+import { CustomManufacturing } from "@/components/sites/apple-com-79a1c2f0/root-e3b0c442/CustomManufacturing";
 import { ProcessShowcase } from "@/components/sites/apple-com-79a1c2f0/root-e3b0c442/ProcessShowcase";
 import { WhyUs } from "@/components/sites/apple-com-79a1c2f0/root-e3b0c442/WhyUs";
 import { FinalCta } from "@/components/sites/apple-com-79a1c2f0/root-e3b0c442/FinalCta";
@@ -14,7 +15,8 @@ export default function Home() {
       <Header />
       <Hero />
       <HeroTransition />
-      <FeatureGrid />
+      <ProductSpecs />
+      <CustomManufacturing />
       <ProcessShowcase />
       <WhyUs />
       <FinalCta />

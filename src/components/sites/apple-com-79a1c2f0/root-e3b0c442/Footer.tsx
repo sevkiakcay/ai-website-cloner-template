@@ -6,19 +6,19 @@ const COLUMNS = [
   {
     heading: "Ürünler",
     links: [
-      { label: "Ahşap Palet (80x120)", href: "#ahsap-palet" },
-      { label: "Ahşap Palet (80x100)", href: "#ahsap-palet" },
-      { label: "Ahşap Palet (100x120)", href: "#ahsap-palet" },
-      { label: "Özel Ölçü Üretim", href: "#ozel-olcu" },
+      { label: "Ahşap Palet (80x120)", href: "#urunler" },
+      { label: "Ahşap Palet (80x100)", href: "#urunler" },
+      { label: "Ahşap Palet (100x120)", href: "#urunler" },
+      { label: "Özel Ölçü Üretim", href: "#ozel-uretim" },
     ],
   },
   {
     heading: "İhracat",
     links: [
-      { label: "İhracat Paleti", href: "#ozel-olcu" },
+      { label: "İhracat Paleti", href: "#urunler" },
       { label: "Isıl İşlemli Palet", href: "#uretim-sureci" },
       { label: "ISPM-15 Uyumlu Üretim", href: "#uretim-sureci" },
-      { label: "İç Piyasa Paleti", href: "#ozel-olcu" },
+      { label: "İç Piyasa Paleti", href: "#urunler" },
     ],
   },
   {
