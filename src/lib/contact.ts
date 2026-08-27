@@ -8,9 +8,9 @@
  */
 export const CONTACT = {
   /** Digits only, country code first, no "+", no spaces — e.g. "905XXXXXXXXX". */
-  whatsappNumber: null as string | null,
+  whatsappNumber: "905319275599" as string | null,
   /** Display + tel: href format — e.g. "+90 5XX XXX XX XX". */
-  phone: null as string | null,
+  phone: "+90 531 927 55 99" as string | null,
   email: "sevkiakcay@gmail.com" as string | null,
 };
 
